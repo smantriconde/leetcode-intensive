@@ -155,6 +155,28 @@ Given two binary trees, write a function to check if they are the same or not.
 -             return False
 -         return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
 ```
+``` csharp
+public class TreeNode
+{
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
+    public TreeNode(int x) { val = x; }
+}
+
+public class Solution
+{
+    public bool IsSameTree(TreeNode p, TreeNode q)
+    {
+        if (p == null && q == null)
+            return true;
+        if (p == null || q == null || p.val != q.val)
+            return false;
+        return IsSameTree(p.left, q.left) && IsSameTree(p.right, q.right);
+    }
+}
+
+```
 ##### Time complexity:
 O(n)
 ##### Space complexity:
@@ -210,6 +232,28 @@ Given two binary trees, write a function to check if they are the same or not.
 -             return False
 -         return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
 ```
+``` csharp
+public class TreeNode
+{
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
+    public TreeNode(int x) { val = x; }
+}
+
+public class Solution
+{
+    public bool IsSameTree(TreeNode p, TreeNode q)
+    {
+        if (p == null && q == null)
+            return true;
+        if (p == null || q == null || p.val != q.val)
+            return false;
+        return IsSameTree(p.left, q.left) && IsSameTree(p.right, q.right);
+    }
+}
+
+```
 Check if two binary trees are the same by comparing their nodes recursively.
     
 ### >> 250 Count Univalue Subtrees [Medium]
@@ -246,6 +290,46 @@ Given a binary tree, count the number of uni-value subtrees. A uni-value subtree
 -             self.count += 1
 -             return True
 -         return False
+```
+``` csharp
+public class TreeNode
+{
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
+    public TreeNode(int x) { val = x; }
+}
+
+public class Solution
+{
+    private int count;
+
+    public int CountUnivalSubtrees(TreeNode root)
+    {
+        count = 0;
+        IsUnival(root);
+        return count;
+    }
+
+    private bool IsUnival(TreeNode node)
+    {
+        if (node == null)
+            return true;
+
+        bool leftUnival = IsUnival(node.left);
+        bool rightUnival = IsUnival(node.right);
+
+        if (leftUnival && rightUnival &&
+            (node.left == null || node.left.val == node.val) &&
+            (node.right == null || node.right.val == node.val))
+        {
+            count++;
+            return true;
+        }
+        return false;
+    }
+}
+
 ```
 ##### Time complexity:
 O(n)
@@ -301,6 +385,28 @@ Given two binary trees, write a function to check if they are the same or not.
 -             return False
 -         return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
 ```
+```
+public class TreeNode
+{
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
+    public TreeNode(int x) { val = x; }
+}
+
+public class Solution
+{
+    public bool IsSameTree(TreeNode p, TreeNode q)
+    {
+        if (p == null && q == null)
+            return true;
+        if (p == null || q == null || p.val != q.val)
+            return false;
+        return IsSameTree(p.left, q.left) && IsSameTree(p.right, q.right);
+    }
+}
+
+```
 Check if two binary trees are the same by comparing their nodes recursively.
     
 ### >> 98 Validate Binary Search Tree [Medium]
@@ -329,6 +435,43 @@ class Solution:
                 return False
             return True
         return helper(root)
+```
+``` charp
+public class TreeNode
+{
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
+    public TreeNode(int x) { val = x; }
+}
+
+public class Solution
+{
+    public bool IsValidBST(TreeNode root)
+    {
+        return Helper(root);
+    }
+
+    private bool Helper(TreeNode node, double lower = double.NegativeInfinity, double upper = double.PositiveInfinity)
+    {
+        if (node == null)
+            return true;
+
+        int val = node.val;
+
+        if (val <= lower || val >= upper)
+            return false;
+
+        if (!Helper(node.right, val, upper))
+            return false;
+
+        if (!Helper(node.left, lower, val))
+            return false;
+
+        return true;
+    }
+}
+
 ```
 ##### Time complexity:
 O(n)
@@ -383,6 +526,28 @@ Given two binary trees, write a function to check if they are the same or not.
 -             return False
 -         return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
 ```
+``` csharp
+public class TreeNode
+{
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
+    public TreeNode(int x) { val = x; }
+}
+
+public class Solution
+{
+    public bool IsSameTree(TreeNode p, TreeNode q)
+    {
+        if (p == null && q == null)
+            return true;
+        if (p == null || q == null || p.val != q.val)
+            return false;
+        return IsSameTree(p.left, q.left) && IsSameTree(p.right, q.right);
+    }
+}
+
+```
 Check if two binary trees are the same by comparing their nodes recursively.
     
 ### >> 101 Symmetric Tree [Easy]
@@ -406,6 +571,32 @@ class Solution:
                 return False
             return (t1.val == t2.val) and isMirror(t1.left, t2.right) and isMirror(t1.right, t2.left)
         return isMirror(root, root)
+```
+``` csharp
+public class TreeNode
+{
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
+    public TreeNode(int x) { val = x; }
+}
+
+public class Solution
+{
+    public bool IsSymmetric(TreeNode root)
+    {
+        return IsMirror(root, root);
+    }
+
+    private bool IsMirror(TreeNode t1, TreeNode t2)
+    {
+        if (t1 == null && t2 == null)
+            return true;
+        if (t1 == null || t2 == null)
+            return false;
+        return (t1.val == t2.val) && IsMirror(t1.left, t2.right) && IsMirror(t1.right, t2.left);
+    }
+}
 ```
 ##### Time complexity:
 O(n)
@@ -452,6 +643,28 @@ Given two binary trees, write a function to check if they are the same or not.
 -         if not p or not q or p.val != q.val:
 -             return False
 -         return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
+```
+``` csharp
+public class TreeNode
+{
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
+    public TreeNode(int x) { val = x; }
+}
+
+public class Solution
+{
+    public bool IsSameTree(TreeNode p, TreeNode q)
+    {
+        if (p == null && q == null)
+            return true;
+        if (p == null || q == null || p.val != q.val)
+            return false;
+        return IsSameTree(p.left, q.left) && IsSameTree(p.right, q.right);
+    }
+}
+
 ```
 Check if two binary trees are the same by comparing their nodes recursively.
     
@@ -504,6 +717,79 @@ class Solution:
         if not node.left and not node.right:
             return [node.val]
         return self.get_leaves(node.left) + self.get_leaves(node.right)
+```
+``` csharp
+using System;
+using System.Collections.Generic;
+
+public class TreeNode
+{
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
+    public TreeNode(int x) { val = x; }
+}
+
+public class Solution
+{
+    public IList<int> BoundaryOfBinaryTree(TreeNode root)
+    {
+        if (root == null)
+            return new List<int>();
+        if (root.left == null && root.right == null)
+            return new List<int> { root.val };
+
+        List<int> leftBoundary = GetLeftBoundary(root.left);
+        List<int> rightBoundary = GetRightBoundary(root.right);
+        List<int> leaves = GetLeaves(root);
+        List<int> result = new List<int>();
+        result.Add(root.val);
+        result.AddRange(leftBoundary);
+        result.AddRange(leaves);
+        result.AddRange(rightBoundary);
+        return result;
+    }
+
+    private List<int> GetLeftBoundary(TreeNode node)
+    {
+        if (node == null || (node.left == null && node.right == null))
+            return new List<int>();
+
+        List<int> leftBoundary = new List<int> { node.val };
+        if (node.left != null)
+            leftBoundary.AddRange(GetLeftBoundary(node.left));
+        else
+            leftBoundary.AddRange(GetLeftBoundary(node.right));
+        return leftBoundary;
+    }
+
+    private List<int> GetRightBoundary(TreeNode node)
+    {
+        if (node == null || (node.left == null && node.right == null))
+            return new List<int>();
+
+        List<int> rightBoundary = new List<int> { node.val };
+        if (node.right != null)
+            rightBoundary.AddRange(GetRightBoundary(node.right));
+        else
+            rightBoundary.AddRange(GetRightBoundary(node.left));
+        return rightBoundary;
+    }
+
+    private List<int> GetLeaves(TreeNode node)
+    {
+        if (node == null)
+            return new List<int>();
+        if (node.left == null && node.right == null)
+            return new List<int> { node.val };
+
+        List<int> leaves = new List<int>();
+        leaves.AddRange(GetLeaves(node.left));
+        leaves.AddRange(GetLeaves(node.right));
+        return leaves;
+    }
+}
+
 ```
 ##### Time complexity:
 O(n)
