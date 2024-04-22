@@ -80,6 +80,37 @@ def isSameTree(p, q):
         return False
     return p.val == q.val and isSameTree(p.left, q.left) and isSameTree(p.right, q.right)
 ```
+```csharp
+public class TreeNode
+{
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
+    public TreeNode(int x) { val = x; }
+}
+
+public class Solution
+{
+    public bool IsSubtree(TreeNode s, TreeNode t)
+    {
+        if (s == null)
+            return false;
+        if (IsSameTree(s, t))
+            return true;
+        return IsSubtree(s.left, t) || IsSubtree(s.right, t);
+    }
+
+    public bool IsSameTree(TreeNode p, TreeNode q)
+    {
+        if (p == null && q == null)
+            return true;
+        if (p == null || q == null)
+            return false;
+        return p.val == q.val && IsSameTree(p.left, q.left) && IsSameTree(p.right, q.right);
+    }
+}
+
+```
 ##### Time complexity:
 O(m * n)
 ##### Space complexity:
