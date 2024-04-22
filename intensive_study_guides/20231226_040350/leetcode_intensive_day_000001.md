@@ -155,7 +155,7 @@ Given two binary trees, write a function to check if they are the same or not.
 -             return False
 -         return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
 ```
-``` csharp
+```csharp
 public class TreeNode
 {
     public int val;
@@ -232,7 +232,7 @@ Given two binary trees, write a function to check if they are the same or not.
 -             return False
 -         return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
 ```
-``` csharp
+```csharp
 public class TreeNode
 {
     public int val;
@@ -291,7 +291,7 @@ Given a binary tree, count the number of uni-value subtrees. A uni-value subtree
 -             return True
 -         return False
 ```
-``` csharp
+```csharp
 public class TreeNode
 {
     public int val;
@@ -385,7 +385,7 @@ Given two binary trees, write a function to check if they are the same or not.
 -             return False
 -         return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
 ```
-```
+```csharp
 public class TreeNode
 {
     public int val;
@@ -436,7 +436,7 @@ class Solution:
             return True
         return helper(root)
 ```
-``` charp
+``` csharp
 public class TreeNode
 {
     public int val;
